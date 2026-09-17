@@ -36,6 +36,12 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local event store (demo data, not source)
+/data/
+
+# internal planning doc, not part of the public portfolio story
+/SPEC.md
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
