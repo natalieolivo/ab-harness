@@ -1,15 +1,18 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function ExperimentTracker({eid, vid, uuid} : {
     eid: string | null;
     vid: string | null;
     uuid: string | null;
 }) {
-    const TRACKING_URL = "/api/events"
+    const TRACKING_URL = "/api/events";
+    const fired = useRef(false);
+
     useEffect(() => {
-        if (!eid || !vid || !uuid) return;
+       if (!eid || !vid || !uuid || fired.current) return;
+       fired.current = true;
 
         fetch(TRACKING_URL, {
             method: "POST",
@@ -23,5 +26,5 @@ export default function ExperimentTracker({eid, vid, uuid} : {
         })
     }, []);
 
-    return (<div>hey</div>)
+    return null;
 }

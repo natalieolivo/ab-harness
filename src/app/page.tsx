@@ -1,7 +1,8 @@
-import styles from "./page.module.css";
+import styles from "@/styles/page.module.css";
 import { headers } from "next/headers";
 import { experiments } from "@/lib/experiments";
-import ExperimentTracker from "@/app/experimentTracker"
+import ExperimentTracker from "@/app/experimentTracker";
+import SubscribeBtn from "@/app/components/cta";
 
 export default async function Home() {
   const listOfHeaders = await headers();
@@ -22,6 +23,11 @@ export default async function Home() {
           </div>
         ))}
         </h1>
+        <SubscribeBtn 
+          eid={experimentId}
+          vid={variantId}
+          uuid={userId}/>
+
         <ExperimentTracker 
           eid={experimentId}
           vid={variantId}
